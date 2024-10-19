@@ -2,12 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Card, ProgressBar } from 'react-native-paper'; // For Card and ProgressBar
-import { useNavigation } from '@react-navigation/native'; 
+import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 
-const HomePage = () => {
+const HomePageBusiness = () => {
+  const navigation = useNavigation(); // Hook to use navigation
 
-  const navigation = useNavigation();
-  
   const handleWalletClick = (walletName) => {
     Alert.alert("Wallet Clicked", `You clicked on the ${walletName} wallet`);
   };
@@ -20,14 +19,14 @@ const HomePage = () => {
     <View style={styles.container}>
       {/* Header Section */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>WELCOME TO WAKANDA WALLET</Text>
+        <Text style={styles.headerText}>WELCOME TO WAKANDA WALLET BUSINESS</Text>
       </View>
 
       {/* Navigation Buttons Section */}
       <View style={styles.navButtons}>
-        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Pay')}>
+        <TouchableOpacity style={styles.navButton}>
           <Icon name="credit-card" size={24} color="black" />
-          <Text style={styles.navButtonText}>Pay/Recieve</Text>
+          <Text style={styles.navButtonText}>Pay</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.navButton}>
@@ -52,41 +51,43 @@ const HomePage = () => {
           {/* Existing Wallets */}
           <TouchableOpacity onPress={() => handleWalletClick("Wakanda Day-to-Day Wallet")}>
             <Card style={styles.walletCard}>
-              <Text style={styles.walletName}>Wakanda Day-to-Day Wallet</Text>
-              <Text style={styles.walletBalance}>Balance: R 100</Text>
+              <Text style={styles.walletName}>Business Wallet</Text>
+              <Text style={styles.walletBalance}>Balance: R 5000</Text>
             </Card>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => handleWalletClick("Cross-border Payments")}>
-            <Card style={styles.walletCard}>
-              <Text style={styles.walletName}>Cross-border Payments</Text>
-              <Text style={styles.walletBalance}>Balance: R 300</Text>
-            </Card>
+          {/* Temporary Button for BusinessEntryDB */}
+          <TouchableOpacity
+            style={styles.businessEntryButton}
+            onPress={() => navigation.navigate('BusinessEntryDB')} // Navigate to BusinessEntryDB page
+          >
+            <Icon name="briefcase" size={24} color="black" />
+            <Text style={styles.businessEntryText}>Go to Business Entry</Text>
           </TouchableOpacity>
 
           {/* Track Money Section */}
           <TouchableOpacity onPress={handleTrackMySpendClick}>
             <Card style={styles.trackMoneyCard}>
-              <Text style={styles.trackMoneyHeader}>Track My Spend</Text>
+              <Text style={styles.trackMoneyHeader}>Track Business Spend</Text>
 
               {/* Money Out */}
               <View style={styles.moneyRow}>
                 <Text style={styles.moneyLabel}>Money Out</Text>
-                <Text style={styles.moneyValue}>R3000</Text>
+                <Text style={styles.moneyValue}>R10000</Text>
               </View>
               <ProgressBar progress={1} color="red" style={styles.progressBar} />
 
               {/* Money In */}
               <View style={styles.moneyRow}>
                 <Text style={styles.moneyLabel}>Money In</Text>
-                <Text style={styles.moneyValue}>R2900</Text>
+                <Text style={styles.moneyValue}>R15000</Text>
               </View>
               <ProgressBar progress={0.97} color="green" style={styles.progressBar} />
 
               {/* Budget */}
               <View style={styles.moneyRow}>
                 <Text style={styles.moneyLabel}>Budget</Text>
-                <Text style={styles.moneyValue}>R100</Text>
+                <Text style={styles.moneyValue}>R5000</Text>
               </View>
               <ProgressBar progress={0.1} color="blue" style={styles.progressBar} />
             </Card>
@@ -172,6 +173,19 @@ const styles = StyleSheet.create({
     marginTop: 5,
     color: 'gray',
   },
+  businessEntryButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 15,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    elevation: 3,
+    marginBottom: 20,
+  },
+  businessEntryText: {
+    fontSize: 16,
+    marginLeft: 10,
+  },
   trackMoneyCard: {
     padding: 20,
     backgroundColor: 'white',
@@ -203,4 +217,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomePage;
+export default HomePageBusiness;
