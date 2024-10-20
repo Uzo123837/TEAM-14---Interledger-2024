@@ -11,9 +11,14 @@ Navigate to the project directory and install the required dependencies:
 
 ```bash
 cd InterledgerApp
+npm install
 npm install expo
 npm install react-native-paper
 npm install react-native-gesture-handler
+npm install react-native/stack
+npm install @interledger/open-payments
+npm install express @interledger/open-payments
+
 ```
 
 ### 2. Start the Development Server
