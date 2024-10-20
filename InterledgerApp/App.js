@@ -6,12 +6,12 @@ import HomePageBusiness from './HomePageBusiness';
 import BusinessEntryDB from './BusinessEntryDB';
 import Stock from './Stock'
 import Pay from './Pay';
+import QRGenerator from './QRgenerator';
 
-import { AppRegistry } from 'react-native';
 import { name as appName } from './app.json';
 
 import React from 'react';
-AppRegistry.registerComponent(appName, () => App);
+
 
 const Stack = createStackNavigator();
 
@@ -48,6 +48,11 @@ export default function App() {
          name="Pay" 
          component={Pay} 
          />
+         <Stack.Screen 
+         name="QRgenerator" 
+         component={QRGenerator} 
+         />
+         
       </Stack.Navigator>
     </NavigationContainer>
   );

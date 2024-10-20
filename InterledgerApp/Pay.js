@@ -1,79 +1,54 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; 
 
-const placeholderImage = 'InterledgerApp\assets\icon.png'; // Placeholder image link
 
-const Stock = () => {
+
+const Pay = () => {
+  const navigation = useNavigation();
+  const handleIconClick = () => {
+    
+  };
   return (
     <View style={styles.container}>
+      {/* Display image */}
+      <Image 
+        source={require('./assets/wakanda.jpeg')}  // Replace with your image path
+        style={styles.bannerImage}
+      />
 
-      {/* Search Bar Section */}
-      <View style={styles.searchSection}>
-        <Icon name="magnify" size={24} color="gray" style={styles.searchIcon} />
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search for items"
-          placeholderTextColor="gray"
-        />
+      {/* Grid of buttons */}
+      <View style={styles.buttonGrid}>
+        <TouchableOpacity style={styles.button}>
+          <Image source={require('./assets/icons8-qrcode-50.png')} style={styles.icon} />
+          <Text style={styles.buttonText}>Generate QR to Pay</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('QRgenerator')}>
+          <Image source={require('./assets/icons8-qrcode-50.png')} style={styles.icon} />
+          <Text style={styles.buttonText}>Generate QR to Receive</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button}>
+          <Image source={require('./assets/icons8-qr-code-scan-48.png')} style={styles.icon} />
+          <Text style={styles.buttonText}>Scan-to-pay</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button}>
+          <Image source={require('./assets/icons8-qr-code-scan-48.png')} style={styles.icon} />
+          <Text style={styles.buttonText}>Scan-to-receive</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button}>
+          <Image source={require('./assets/icons8-avatar-24.png')} style={styles.icon} />
+          <Text style={styles.buttonText}>Pay Beneficiary</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button}>
+          <Image source={require('./assets/icons8-international-50.png')} style={styles.icon} />
+          <Text style={styles.buttonText}>Cross-border Payment</Text>
+        </TouchableOpacity>
       </View>
-
-      {/* Items Grid */}
-      <ScrollView contentContainerStyle={styles.grid}>
-        {/* Item Card */}
-        <View style={styles.itemCard}>
-          <Image source={{ uri: placeholderImage }} style={styles.itemImage} />
-          <Text style={styles.itemName}>Albany bread R20</Text>
-          <TouchableOpacity style={styles.closeButton}>
-            <Icon name="plus-circle" size={24} color="gray" />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.itemCard}>
-          <Image source={{ uri: placeholderImage }} style={styles.itemImage} />
-          <Text style={styles.itemName}>Milk R30</Text>
-          <TouchableOpacity style={styles.closeButton}>
-            <Icon name="plus-circle" size={24} color="gray" />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.itemCard}>
-          <Image source={{ uri: placeholderImage }} style={styles.itemImage} />
-          <Text style={styles.itemName}>Organic Eggs R40</Text>
-          <TouchableOpacity style={styles.closeButton}>
-            <Icon name="plus-circle" size={24} color="gray" />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.itemCard}>
-          <Image source={{ uri: placeholderImage }} style={styles.itemImage} />
-          <Text style={styles.itemName}>KitKat R15</Text>
-          <TouchableOpacity style={styles.closeButton}>
-            <Icon name="plus-circle" size={24} color="gray" />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.itemCard}>
-          <Image source={{ uri: placeholderImage }} style={styles.itemImage} />
-          <Text style={styles.itemName}>Lays R20</Text>
-          <TouchableOpacity style={styles.closeButton}>
-            <Icon name="plus-circle" size={24} color="gray" />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.itemCard}>
-          <Image source={{ uri: placeholderImage }} style={styles.itemImage} />
-          <Text style={styles.itemName}>Cadbury R25</Text>
-          <TouchableOpacity style={styles.closeButton}>
-            <Icon name="plus-circle" size={24} color="gray" />
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-
-      {/* Add to Database Button */}
-      <TouchableOpacity style={styles.addButton}>
-        <Text style={styles.addButtonText}>Add </Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -81,76 +56,36 @@ const Stock = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
-    padding: 10,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 10,
-  },
-  headerText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginLeft: 10,
-  },
-  searchSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
     backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 10,
-    elevation: 2,
-    marginVertical: 10,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
-  searchIcon: {
-    marginRight: 10,
+  bannerImage: {
+    width: '100%',
+    height: 200,  // Adjust height as per the design
+    resizeMode: 'cover',
   },
-  searchInput: {
-    flex: 1,
-    fontSize: 16,
-  },
-  grid: {
+  buttonGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
+    marginTop: 20,
   },
-  itemCard: {
-    width: '48%',
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 10,
-    marginBottom: 10,
-    elevation: 3,
+  button: {
+    width: '40%',
     alignItems: 'center',
+    marginBottom: 20,
   },
-  itemImage: {
-    width: 100,
-    height: 100,
+  icon: {
+    width: 50,
+    height: 50,
     marginBottom: 10,
   },
-  itemName: {
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  closeButton: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-  },
-  addButton: {
-    backgroundColor: '#56B6B4',
-    borderRadius: 8,
-    paddingVertical: 15,
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  addButtonText: {
-    color: '#fff',
+  buttonText: {
+    textAlign: 'center',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '500',
   },
 });
 
-export default Stock;
-
+export default Pay;
