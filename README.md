@@ -32,3 +32,4 @@ To run the app on your phone, download the **Expo Go** app from your device's ap
 - [Expo Go for iOS](https://apps.apple.com/us/app/expo-go/id982107779)
 
 ### 4. Running the App on Your Phone
+Scan the QR code generated from the server(your PC) using Expo Go.
