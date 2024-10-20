@@ -2,18 +2,34 @@ import * as React from "react";
 import { StyleSheet, View, Text, Pressable, ImageBackground, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Border, FontSize } from "./GlobalStyles";
+<<<<<<< HEAD
+=======
 import HomePage from './HomePage';
 import HomePageBusiness from './HomePageBusiness';
+>>>>>>> 464a6fe0a095cd0ed921de69efcf6a3bfd240880
 
 const WelcomePage = () => {
   const navigation = useNavigation();
 
   const handleBusinessPress = () => {
+<<<<<<< HEAD
+    // navigation.navigate("BusinessSignInPage");
+  };
+
+  const handlePersonalPress = () => {
+    // navigation.navigate("PersonalSignInPage");
+  };
+  
+  // New handler for navigating to the ProfilePage
+  const handleProfilePress = () => {
+    navigation.navigate("ProfilePage");
+=======
     navigation.navigate("HomePageBusiness");
   };
 
   const handlePersonalPress = () => {
     navigation.navigate("HomePage"); 
+>>>>>>> 464a6fe0a095cd0ed921de69efcf6a3bfd240880
   };
 
   return (
@@ -35,6 +51,13 @@ const WelcomePage = () => {
           <Pressable style={styles.button} onPress={handlePersonalPress}>
             <Text style={styles.buttonText}>Personal use</Text>
           </Pressable>
+<<<<<<< HEAD
+          {/* New button to navigate to the ProfilePage */}
+          <Pressable style={styles.button} onPress={handleProfilePress}>
+            <Text style={styles.buttonText}>Go to Profile</Text>
+          </Pressable>
+=======
+>>>>>>> 464a6fe0a095cd0ed921de69efcf6a3bfd240880
         </View>
       </View>
 
@@ -134,4 +157,8 @@ const styles = StyleSheet.create({
   },
 });
 
+<<<<<<< HEAD
 export default WelcomePage;
+=======
+export default WelcomePage;
+>>>>>>> 464a6fe0a095cd0ed921de69efcf6a3bfd240880

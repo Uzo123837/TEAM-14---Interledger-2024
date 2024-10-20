@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react'; 
+import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Card, ProgressBar } from 'react-native-paper'; // For Card and ProgressBar
 import { useNavigation } from '@react-navigation/native'; 
 
 const HomePage = () => {
-  const [walletData, setWalletData] = useState({ name: '', balance: 0, assetCode: '' });
-  const [message, setMessage] = useState('');
-  const [quoteId, setQuoteId] = useState(''); 
 
   const navigation = useNavigation();
-
   
-
   const handleWalletClick = (walletName) => {
     Alert.alert("Wallet Clicked", `You clicked on the ${walletName} wallet`);
   };
@@ -32,7 +27,7 @@ const HomePage = () => {
       <View style={styles.navButtons}>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Pay')}>
           <Icon name="credit-card" size={24} color="black" />
-          <Text style={styles.navButtonText}>Pay/Receive</Text>
+          <Text style={styles.navButtonText}>Pay/Recieve</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.navButton}>
@@ -58,7 +53,7 @@ const HomePage = () => {
           <TouchableOpacity onPress={() => handleWalletClick("Wakanda Day-to-Day Wallet")}>
             <Card style={styles.walletCard}>
               <Text style={styles.walletName}>Wakanda Day-to-Day Wallet</Text>
-              <Text style={styles.walletBalance}>Balance: {walletData.assetCode} {walletData.balance.toFixed(2)}</Text>
+              <Text style={styles.walletBalance}>Balance: R 100</Text>
             </Card>
           </TouchableOpacity>
 
@@ -97,17 +92,11 @@ const HomePage = () => {
             </Card>
           </TouchableOpacity>
         </View>
-
-        {/* Optional: Displaying the quote ID (for demonstration purposes) */}
-        {quoteId && (
-          <View style={styles.quoteContainer}>
-            <Text style={styles.quoteText}>Quote ID: {quoteId}</Text>
-          </View>
-        )}
       </ScrollView>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -212,15 +201,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 15,
   },
-  quoteContainer: {
-    padding: 15,
-    backgroundColor: 'white',
-    borderRadius: 10,
-    marginBottom: 15,
-    elevation: 3,
-  },
-  quoteText: {
-    fontSize: 14,}
 });
 
 export default HomePage;
